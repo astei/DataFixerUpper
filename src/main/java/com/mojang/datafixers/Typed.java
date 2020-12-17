@@ -184,11 +184,11 @@ public final class Typed<A> {
     }
 
     public <B> Typed<Either<A, B>> inj1(final Type<B> type) {
-        return new Typed<>(DSL.or(this.type, type), ops, new Inj1<A, B, A>().build(value));
+        return new Typed<>(DSL.or(this.type, type), ops, Inj1.<A, B, A>instance().build(value));
     }
 
     public <B> Typed<Either<B, A>> inj2(final Type<B> type) {
-        return new Typed<>(DSL.or(type, this.type), ops, new Inj2<B, A, A>().build(value));
+        return new Typed<>(DSL.or(type, this.type), ops, Inj2.<B, A, A>instance().build(value));
     }
 
     public static <A, B> Typed<Pair<A, B>> pair(final Typed<A> first, final Typed<B> second) {

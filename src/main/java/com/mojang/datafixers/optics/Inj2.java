@@ -5,6 +5,14 @@ package com.mojang.datafixers.optics;
 import com.mojang.datafixers.util.Either;
 
 public final class Inj2<F, G, G2> implements Prism<Either<F, G>, Either<F, G2>, G, G2> {
+    private static final Inj2<?, ?, ?> INSTANCE = new Inj2();
+
+    private Inj2() {}
+
+    public static <F, G, F2> Inj2<F, G, F2> instance() {
+        return (Inj2<F, G, F2>) INSTANCE;
+    }
+
     @Override
     public Either<Either<F, G2>, G> match(final Either<F, G> either) {
         return either.map(f -> Either.left(Either.left(f)), Either::right);

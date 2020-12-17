@@ -131,7 +131,7 @@ public final class TypedOptic<S, T, A, B> {
             DSL.and(newType, gType),
             fType,
             newType,
-            new Proj1<>()
+            Proj1.instance()
         );
     }
 
@@ -142,7 +142,7 @@ public final class TypedOptic<S, T, A, B> {
             DSL.and(fType, newType),
             gType,
             newType,
-            new Proj2<>()
+            Proj2.instance()
         );
     }
 
@@ -153,7 +153,7 @@ public final class TypedOptic<S, T, A, B> {
             DSL.or(newType, gType),
             fType,
             newType,
-            new Inj1<>()
+            Inj1.instance()
         );
     }
 
@@ -164,7 +164,7 @@ public final class TypedOptic<S, T, A, B> {
             DSL.or(fType, newType),
             gType,
             newType,
-            new Inj2<>()
+            Inj2.instance()
         );
     }
 

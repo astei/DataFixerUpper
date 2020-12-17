@@ -250,7 +250,7 @@ public interface PointFreeRule {
                         so = ((Optic.CompositionOptic<?, ?, ?, ?, ?, ?, ?>) so).outer();
                     }
 
-                    if (Objects.equals(fo, Optics.proj2()) && Objects.equals(so, Optics.proj1())) {
+                    if (fo == Optics.proj2() && so == Optics.proj1()) {
                         final Func<?, ?> firstArg = (Func<?, ?>) applyFirst.argType;
                         final Func<?, ?> secondArg = (Func<?, ?>) applySecond.argType;
                         return Optional.of(cap(firstArg, secondArg, applyFirst, applySecond));
@@ -295,7 +295,7 @@ public interface PointFreeRule {
                         so = ((Optic.CompositionOptic<?, ?, ?, ?, ?, ?, ?>) so).outer();
                     }
 
-                    if (Objects.equals(fo, Optics.inj2()) && Objects.equals(so, Optics.inj1())) {
+                    if (fo == Optics.inj2() && so == Optics.inj1()) {
                         final Func<?, ?> firstArg = (Func<?, ?>) applyFirst.argType;
                         final Func<?, ?> secondArg = (Func<?, ?>) applySecond.argType;
                         return Optional.of(cap(firstArg, secondArg, applyFirst, applySecond));
