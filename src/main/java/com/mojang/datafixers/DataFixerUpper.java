@@ -123,7 +123,7 @@ public class DataFixerUpper implements DataFixer {
 
         final long key = (long) expandedVersion << 32 | expandedDataVersion;
         return rules.computeIfAbsent(key, k -> {
-            final List<TypeRewriteRule> rules = Lists.newArrayList();
+            final ImmutableList.Builder<TypeRewriteRule> rules = ImmutableList.builder();
             for (final DataFix fix : globalList) {
                 final int fixVersion = fix.getVersionKey();
                 if (fixVersion > expandedVersion && fixVersion <= expandedDataVersion) {
@@ -135,7 +135,7 @@ public class DataFixerUpper implements DataFixer {
                 }
             }
 
-            return TypeRewriteRule.seq(rules);
+            return TypeRewriteRule.seq(rules.build());
         });
     }
 
