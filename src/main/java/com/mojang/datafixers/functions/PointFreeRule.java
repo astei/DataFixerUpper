@@ -453,7 +453,7 @@ public interface PointFreeRule {
                         secondModifies.set(i, !secondId);
                     }
 
-                    final BitSet newSet = ObjectUtils.clone(firstModifies);
+                    final BitSet newSet = (BitSet) firstModifies.clone();
                     newSet.or(secondModifies);
 
                     // if the left function doesn't care about the right modifications, and converse is correct, the merge is valid
