@@ -60,7 +60,7 @@ public class DataFixerBuilder {
     }
 
     public DataFixer build(final Executor executor) {
-        final DataFixerUpper fixerUpper = new DataFixerUpper(new Int2ObjectAVLTreeMap<>(schemas), new ArrayList<>(globalList), new IntAVLTreeSet(fixerVersions));
+        final DataFixerUpper fixerUpper = new DataFixerUpper(schemas, globalList, fixerVersions);
 
         final IntBidirectionalIterator iterator = fixerUpper.fixerVersions().iterator();
         while (iterator.hasNext()) {
