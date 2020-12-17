@@ -62,9 +62,9 @@ public class DataFixerBuilder {
     public DataFixer build(final Executor executor) {
         final DataFixerUpper fixerUpper = new DataFixerUpper(schemas, globalList, fixerVersions);
 
-        final IntBidirectionalIterator iterator = fixerUpper.fixerVersions().iterator();
-        while (iterator.hasNext()) {
-            final int versionKey = iterator.nextInt();
+        final IntBidirectionalIterator iterator = fixerUpper.fixerVersions().iterator(fixerUpper.fixerVersions().lastInt());
+        while (iterator.hasPrevious()) {
+            final int versionKey = iterator.previousInt();
             final Schema schema = schemas.get(versionKey);
             for (final String typeName : schema.types()) {
                 CompletableFuture.runAsync(() -> {
